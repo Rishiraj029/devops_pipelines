@@ -1,0 +1,50 @@
+name: CI Pipeline
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v5
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+
+      - name: Debug repo contents
+        run: |
+          pwd
+          ls -la
+          if [ -f package.json ]; then
+            echo "package.json found at repo root"
+            cat package.json
+          else
+            echo "package.json NOT found at repo root"
+          fi
+
+      - name: Install dependencies
+        run: |
+          if [ -f package.json ]; then
+            if [ -f package-lock.json ]; then
+              npm ci --prefer-offline --no-audit --progress=false
+            else
+              npm install
+            fi
+          else
+            echo "Skipping npm install: package.json not present"
+          fi
+
+      - name: Run tests
+        run: |
+          if [ -f package.json ]; then
+            npm test
+          else
+            echo "Skipping tests: package.json not present"
+          fi
+
