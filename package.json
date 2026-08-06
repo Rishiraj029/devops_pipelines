@@ -1,14 +1,21 @@
 {
-  "name": "practice_next_js",
+  "name": "devops_pipelines",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "run": "node index.js",
-    "test": "node test.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rishiraj029/devops_pipelines.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs"
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Rishiraj029/devops_pipelines/issues"
+  },
+  "homepage": "https://github.com/Rishiraj029/devops_pipelines#readme"
 }
